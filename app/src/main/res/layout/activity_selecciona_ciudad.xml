@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pantalla_seleccion_ciudad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:padding="16dp"
+    tools:context=".SeleccionaCiudadActivity">
+
+
+    <ImageView
+        android:id="@+id/selecciona_departamento"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:src="@drawable/seleccionciudad"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageButton
+        android:id="@+id/departamento_santa_cruz"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/santacruz"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/selecciona_departamento"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"/>
+
+
+    <ImageButton
+        android:id="@+id/departamento_la_paz"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/lapaz"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/departamento_santa_cruz"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"/>
+
+
+    <ImageButton
+        android:id="@+id/departamento_sucre"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/sucre"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/departamento_la_paz"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"/>
+
+    <ImageButton
+        android:id="@+id/departamento_potosi"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/potosi"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/departamento_sucre"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"/>
+
+    <ImageButton
+        android:id="@+id/departamento_beni"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/beni"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/departamento_potosi"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"/>
+
+
+    <ImageButton
+        android:id="@+id/departamento_tarija"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/tarija"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/departamento_santa_cruz"
+        android:layout_marginStart="8dp"/>
+
+    <ImageButton
+        android:id="@+id/departamento_cochabamba"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/cochabamba"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/departamento_la_paz"
+        android:layout_marginStart="8dp"/>
+
+
+    <ImageButton
+        android:id="@+id/departamento_oruro"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/oruro"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/departamento_sucre"
+        android:layout_marginStart="8dp"/>
+
+
+    <ImageButton
+        android:id="@+id/departamento_pando"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/pando"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/departamento_potosi"
+        android:layout_marginStart="8dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

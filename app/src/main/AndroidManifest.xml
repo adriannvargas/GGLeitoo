@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GGLeito">
         <activity
+            android:name=".DepartamentoSeleccionadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SeleccionaCiudadActivity"
+            android:exported="false" />
+        <activity
             android:name=".PantallaDeInicioActivity"
             android:exported="false" />
         <activity
