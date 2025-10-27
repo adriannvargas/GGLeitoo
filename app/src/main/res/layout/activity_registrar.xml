@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pantalla_resgistrar"
+    android:id="@+id/activity_registrar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrarActivity"
@@ -99,15 +99,15 @@
         android:id="@+id/boton_crear_cuenta"
         android:layout_width="210dp"
         android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/azul"
+        android:fontFamily="@font/deluna"
         android:text="Crear Cuenta"
         android:textSize="26sp"
-        android:backgroundTint="@color/azul"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_edad"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/deluna"
-        />
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_edad" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
