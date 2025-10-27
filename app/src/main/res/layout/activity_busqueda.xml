@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BusquedaActivity"
+    android:background="@color/beige">
+    <ImageView
+        android:id="@+id/imagen_empleabol"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/empleabol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/edit_text_correo_electronico"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/roundededittext"
+        android:hint="  Buscar"
+        app:layout_constraintEnd_toEndOf="@id/imagen_empleabol"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagen_empleabol" />
+    <Button
+        android:id="@+id/botton_buscar"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/verde"
+        android:fontFamily="@font/fileskool"
+        android:text="Buscar"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/edit_text_correo_electronico"
+        app:layout_constraintTop_toBottomOf="@id/imagen_empleabol" />
+    <Button
+        android:id="@+id/botton_filtrar"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/verde"
+        android:fontFamily="@font/fileskool"
+        android:text="Filtrar"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_correo_electronico"
+        android:layout_marginStart="30dp"/>
+
+    <ImageView
+        android:id="@+id/icono_perfil"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="24dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@id/botton_buscar"
+        app:layout_constraintStart_toEndOf="@id/imagen_empleabol"
+        app:srcCompat="@drawable/person_button_svgrepo_com"
+        app:tint="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/barra_de_abajo"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="@color/beige_claro"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:id="@+id/icono_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/house_svgrepo_com"
+            app:tint="@color/black" />
+        <ImageView
+            android:id="@+id/icono_buscar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/magnifier_svgrepo_com"
+            app:tint="@color/black" />
+        <ImageView
+            android:id="@+id/icono_trabajos_postulados"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/arrow_left_arrow_right_svgrepo_com"
+            app:tint="@color/black" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
