@@ -16,7 +16,7 @@ class PantallaDeInicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding= ActivityPantallaDeInicioBinding.inflate(layoutInflater)
-        val view = binding.root
+        val view = binding.pantallaDeInicio
         setContentView(view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.pantalla_de_inicio)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
