@@ -18,7 +18,7 @@ class PantallaDeInicioActivity : AppCompatActivity() {
         binding= ActivityPantallaDeInicioBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.pantalla_de_inicio)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

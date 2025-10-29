@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetallesTrabajoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="10"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.7"
+            android:background="@color/beige">
+
+            <ImageView
+                android:layout_width="252dp"
+                android:layout_height="99dp"
+                android:src="@drawable/empleabol"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/person_button_svgrepo_com"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2">
+
+            </ImageView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_padre"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7.3"
+            android:background="@color/beige">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_padre2"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toTopOf="@id/constraint_padre"
+                app:layout_constraintEnd_toEndOf="@id/constraint_padre"
+                app:layout_constraintStart_toStartOf="@id/constraint_padre"
+                android:background="@color/beige_claro">
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:id="@+id/text_view_puesto_trabajo"
+                    android:layout_width="160dp"
+                    android:layout_height="90dp"
+                    app:layout_constraintStart_toStartOf="@id/constraint_padre2"
+                    app:layout_constraintTop_toTopOf="@id/constraint_padre2"
+                    android:gravity="center"
+                    android:background="@drawable/edittextbordesnegros"
+                    android:fontFamily="@font/deluna">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_view_nombre_trabajo"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_puesto_trabajo"
+                    app:layout_constraintStart_toStartOf="@id/constraint_padre2"
+                    android:textColor="@color/black"
+                    android:background="@drawable/edittextbordesnegros"
+                    android:gravity="center"
+                    android:fontFamily="@font/deluna">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/text_view_salario"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_nombre_trabajo"
+                    app:layout_constraintStart_toStartOf="@id/constraint_padre2"
+                    android:textColor="@color/black"
+                    android:background="@drawable/edittextbordesnegros"
+                    android:gravity="center"
+                    android:fontFamily="@font/fileskool">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/text_view_descripcion"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_salario"
+                    app:layout_constraintStart_toStartOf="@id/constraint_padre2"
+                    android:background="@drawable/edittextbordesnegros"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/fileskool">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/text_view_horario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_descripcion"
+                    app:layout_constraintStart_toStartOf="@id/constraint_padre2"
+                    android:background="@drawable/edittextbordesnegros"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:fontFamily="@font/fileskool">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/text_view_ubicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_horario"
+                    app:layout_constraintStart_toStartOf="@id/constraint_padre2"
+                    android:background="@drawable/edittextbordesnegros"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:fontFamily="@font/fileskool">
+
+                </TextView>
+                <ImageView
+                    android:id="@+id/image_view_trabajo"
+                    android:layout_width="110dp"
+                    android:layout_height="174dp"
+                    app:layout_constraintEnd_toEndOf="@id/constraint_padre2"
+                    app:layout_constraintTop_toTopOf="@id/constraint_padre2"
+                    android:background="@drawable/edittextbordesnegros"
+                    >
+
+                </ImageView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/boton_postular"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@id/constraint_padre"
+                app:layout_constraintTop_toTopOf="@id/constraint_padre"
+                app:layout_constraintEnd_toEndOf="@id/constraint_padre"
+                app:layout_constraintStart_toStartOf="@id/constraint_padre"
+                app:layout_constraintVertical_bias="0.95"
+                android:backgroundTint="@color/verde"
+                android:text="POSTULAR">
+
+            </Button>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/beige_claro"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/image_view_casa"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/house_svgrepo_com">
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/image_view_lupa"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/lupa_svgrepo_com">
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/image_view_flechas"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/flechas_svgrepo_com">
+
+            </ImageView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,13 @@
 package com.example.ggleito.dataclasses
 
-import android.media.Image
-import java.util.Date
+import kotlinx.serialization.Serializable
 
+
+@Serializable
 data class Trabajos(
 
     val nombreTrabajo: String,
+    val puestoTrabajo: String,
     val salario: Int,
     val ciudad: String,
     val horarioInicio: Int,
