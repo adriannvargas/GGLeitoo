@@ -1,5 +1,6 @@
 package com.example.ggleito
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -19,17 +20,15 @@ class DepartamentoSeleccionadoActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         val imageView = findViewById<ImageView>(R.id.imagen_departamento)
         val btnSiguiente = findViewById<Button>(R.id.boton_siguiente)
-
-
         val imageResId = intent.getIntExtra("imagen_departamento", 0)
         if (imageResId != 0) {
             imageView.setImageResource(imageResId)
         }
         btnSiguiente.setOnClickListener {
-
+            val intent = Intent(this, PantallaPrincipalActivity::class.java)
+            startActivity(intent)
         }
     }
 }
