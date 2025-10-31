@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/selecciona_departamento"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/cochabamba" />
+         />
 
 
     <Button
