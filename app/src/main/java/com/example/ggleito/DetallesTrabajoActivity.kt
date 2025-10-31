@@ -98,6 +98,21 @@ class DetallesTrabajoActivity : AppCompatActivity() {
 
         }
 
+        binding.botonEliminarPostulacion.setOnClickListener {
+
+            trabajo2?.let { trabajoaEliminar->
+
+                TrabajosPostuladosManager.eliminarTrabajo(this,trabajoaEliminar)
+                android.widget.Toast.makeText(this, "Has eliminado tu postulacion a: ${trabajo2?.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
+                val vueltaPantallaPostulados : Intent = Intent(context, TrabajosPostuladosActivity::class.java)
+                startActivity(vueltaPantallaPostulados)
+
+            }?: run {
+                android.widget.Toast.makeText(this, "Error, no pudiste cancelar tu postulacion", android.widget.Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
         binding.botonConfirmacionPostulacion.setOnClickListener {
 
             val intentVolverAlInicio = Intent(context, PantallaPrincipalActivity::class.java)
