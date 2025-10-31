@@ -12,13 +12,14 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 
-class AdapterRecyclerPantallaPrincipal: RecyclerView.Adapter<AdapterRecyclerPantallaPrincipal.PantallaPrincipalCardViewHolder>() {
+class AdapterRecyclerPantallaPrincipal(private val mostrarClick: String = "PantallaPrincipal"): RecyclerView.Adapter<AdapterRecyclerPantallaPrincipal.PantallaPrincipalCardViewHolder>() {
 
     private val dataCards = mutableListOf<Trabajos>()
     private var context: Context? = null
 
     companion object{
         val TRABAJO_JSON = "id_trabajos_json"
+        val TRABAJO_JSON2 = "id_trabajo_json2"
     }
 
 
@@ -35,19 +36,40 @@ class AdapterRecyclerPantallaPrincipal: RecyclerView.Adapter<AdapterRecyclerPant
 
     override fun onBindViewHolder(holder: PantallaPrincipalCardViewHolder, position: Int) {
         holder.binding(dataCards[position])
+        if(mostrarClick == "PantallaPrincipal"){
 
-        holder.itemView.setOnClickListener {
+            holder.itemView.setOnClickListener {
 
-            val trabajoEspecifico = dataCards[position]
-            val trabajoJson = Json.encodeToString(trabajoEspecifico)
+                val trabajoEspecifico = dataCards[position]
+                val trabajoJson = Json.encodeToString(trabajoEspecifico)
 
-            val intent: Intent = Intent(context, DetallesTrabajoActivity::class.java).apply {
+                val intent: Intent = Intent(context, DetallesTrabajoActivity::class.java).apply {
                 putExtra(TRABAJO_JSON, trabajoJson)
             }
 
             context?.startActivity(intent)
+            }
+        }else if(mostrarClick == "TrabajosPostulados"){
+
+            holder.itemView.setOnClickListener {
+
+                val trabajoEspecifico2 = dataCards[position]
+                val trabajoJson2 = Json.encodeToString(trabajoEspecifico2)
+
+                val cambioDePantallaEnPostulados: Intent = Intent(context, DetallesTrabajoActivity::class.java).apply {
+                    putExtra(TRABAJO_JSON2,trabajoJson2)
+
+                }
+
+                context?.startActivity(cambioDePantallaEnPostulados)
+
+
+            }
 
         }
+
+
+
 
     }
 
@@ -60,8 +82,6 @@ class AdapterRecyclerPantallaPrincipal: RecyclerView.Adapter<AdapterRecyclerPant
             binding.textViewAdapterNombre.text = data.nombreTrabajo
             binding.textViewAdapterSalario.text = "Salario: ${data.salario}"
             binding.imagenAdapterTrabajo.setImageResource(data.imagen)
-
-
 
         }
 

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PantallaPrincipalActivity"
+    tools:context=".TrabajosPostuladosActivity"
     android:background="@color/beige">
 
     <LinearLayout
@@ -31,19 +31,20 @@
             </ImageView>
 
             <TextView
-                android:layout_width="180dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:background="@drawable/roundededittextnegro"
                 android:fontFamily="@font/deluna"
                 android:gravity="center"
-                android:text="Recomendados"
+                android:text="Trabajos Postulados"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.7">
+                app:layout_constraintVertical_bias="0.7"
+                android:textSize="30dp">
 
             </TextView>
 
@@ -74,7 +75,7 @@
                 android:weightSum="1">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_pantalla_recomendados"
+                    android:id="@+id/recycler_pantalla_postulados"
                     android:layout_width="match_parent"
                     android:layout_height="490dp"
                     android:layout_gravity="center"
@@ -96,7 +97,7 @@
             android:weightSum="3">
 
             <ImageView
-                android:id="@+id/image_view_casa1"
+                android:id="@+id/image_view_casa2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -105,6 +106,7 @@
             </ImageView>
 
             <ImageView
+                android:id="@+id/image_view_lupa2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -113,7 +115,7 @@
             </ImageView>
 
             <ImageView
-                android:id="@+id/image_view_flechas1"
+                android:id="@+id/image_view_flechas2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

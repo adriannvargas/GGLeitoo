@@ -8,6 +8,7 @@ data class Trabajos(
 
     val nombreTrabajo: String,
     val puestoTrabajo: String,
+    val areaTrabajo: String,
     val salario: Int,
     val ciudad: String,
     val horarioInicio: Int,

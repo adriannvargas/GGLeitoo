@@ -3,13 +3,18 @@ package com.example.ggleito
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ggleito.databinding.ActivityDetallesTrabajoBinding
 import com.example.ggleito.adapters.AdapterRecyclerPantallaPrincipal.Companion.TRABAJO_JSON
+import com.example.ggleito.adapters.AdapterRecyclerPantallaPrincipal.Companion.TRABAJO_JSON2
 import com.example.ggleito.dataclasses.Trabajos
+import com.example.ggleito.managers.TrabajosPostuladosManager
 import kotlinx.serialization.json.Json
 
 class DetallesTrabajoActivity : AppCompatActivity() {
@@ -34,11 +39,19 @@ class DetallesTrabajoActivity : AppCompatActivity() {
 
         val trabajoJson: String? = intent.getStringExtra(TRABAJO_JSON)
 
+        val trabajoJsonPostulados: String? = intent.getStringExtra(TRABAJO_JSON2)
+
 
         //Estamos convirtiendo el Json de nuevo a objeto
         val trabajo = trabajoJson?.let {
             Json.decodeFromString<Trabajos>(it)
         }
+
+        val trabajo2 = trabajoJsonPostulados?.let {
+            Json.decodeFromString<Trabajos>(it)
+        }
+
+
 
         fun mostrarDetallesTrabajo(trabajo: Trabajos){
 
@@ -48,23 +61,60 @@ class DetallesTrabajoActivity : AppCompatActivity() {
             binding.textViewDescripcion.text = "Descripcion: \n${trabajo.descripcion}"
             binding.textViewHorario.text = "Horario: \n${trabajo.horarioInicio}:00 - ${trabajo.horarioFin}:00"
             binding.textViewUbicacion.text = "Ubicacion: \n${trabajo.ciudad}"
-            binding.imageViewTrabajo.setImageResource(trabajo.imagen)
+            binding.imageViewTrabajo.setImageResource(trabajo.imagen )
+
 
         }
 
-        if(trabajo != null){
+        if(trabajo != null ){
+
             mostrarDetallesTrabajo(trabajo)
+
+        }
+
+        if (trabajo2 != null){
+            mostrarDetallesTrabajo(trabajo2)
+
+            binding.botonEliminarPostulacion.visibility = Button.VISIBLE
+            binding.botonPostular.visibility = Button.GONE
         }
 
         binding.botonPostular.setOnClickListener {
-            android.widget.Toast.makeText(this, "Has postulado a: ${trabajo?.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
+
+            //let hace que nos aseguremos que el trabajo no sea null
+            trabajo?.let { trabajoSeleccionado ->
+
+                TrabajosPostuladosManager.agregarTrabajos(this, trabajoSeleccionado)
+                android.widget.Toast.makeText(this, "Has postulado a: ${trabajo?.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
+
+            }?: run {
+                android.widget.Toast.makeText(this, "Error, no se pudo postular", android.widget.Toast.LENGTH_SHORT).show()
+            }
+
+            binding.imageViewConfirmacionPostulacion.visibility = ImageView.VISIBLE
+            binding.botonConfirmacionPostulacion.visibility = Button.VISIBLE
+            binding.constraintPadre2.visibility = View.INVISIBLE
+            binding.botonPostular.visibility = Button.INVISIBLE
+
         }
+
+        binding.botonConfirmacionPostulacion.setOnClickListener {
+
+            val intentVolverAlInicio = Intent(context, PantallaPrincipalActivity::class.java)
+            startActivity(intentVolverAlInicio)
+
+        }
+
 
         binding.imageViewCasa.setOnClickListener {
 
             val intentCambioPantalla: Intent = Intent(context, PantallaPrincipalActivity::class.java)
             startActivity(intentCambioPantalla)
 
+        }
+        binding.imageViewFlechas.setOnClickListener {
+            val intentCambioPantalla: Intent = Intent(context, TrabajosPostuladosActivity::class.java)
+            startActivity(intentCambioPantalla)
         }
 
 

@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GGLeito">
         <activity
+            android:name=".TrabajosPostuladosActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetallesTrabajoActivity"
             android:exported="false" />
         <activity
@@ -28,12 +31,7 @@
             android:exported="false" />
         <activity
             android:name=".PantallaDeInicioActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
 
         </activity>
         <activity
@@ -47,11 +45,13 @@
             android:exported="false" />
         <activity
             android:name=".PantallaPrincipalActivity"
-            android:exported="true" >
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
