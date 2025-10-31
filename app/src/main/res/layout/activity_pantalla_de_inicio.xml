@@ -22,7 +22,6 @@
         android:layout_width="220dp"
         android:layout_height="260dp"
         android:src="@drawable/trabajos"
-        android:contentDescription="Logo central"
         app:layout_constraintTop_toBottomOf="@id/imagen_titulo_pantalla_principal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

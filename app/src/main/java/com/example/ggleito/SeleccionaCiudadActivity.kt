@@ -7,12 +7,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ggleito.databinding.ActivitySeleccionaCiudadBinding
 
 class SeleccionaCiudadActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySeleccionaCiudadBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_selecciona_ciudad)
+
+        binding = ActivitySeleccionaCiudadBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.pantalla_seleccion_ciudad)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -22,22 +27,23 @@ class SeleccionaCiudadActivity : AppCompatActivity() {
 
 
         val departamentos = mapOf(
-            R.id.departamento_santa_cruz to R.drawable.santacruz,
-            R.id.departamento_la_paz to R.drawable.lapaz,
-            R.id.departamento_sucre to R.drawable.sucre,
-            R.id.departamento_potosi to R.drawable.potosi,
-            R.id.departamento_beni to R.drawable.beni,
-            R.id.departamento_tarija to R.drawable.tarija,
-            R.id.departamento_cochabamba to R.drawable.cochabamba,
-            R.id.departamento_oruro to R.drawable.oruro,
-            R.id.departamento_pando to R.drawable.pando
+            binding.departamentoSantaCruz to Pair(R.drawable.santacruz, "Santa Cruz"),
+            binding.departamentoLaPaz to Pair(R.drawable.lapaz, "La Paz"),
+            binding.departamentoSucre to Pair(R.drawable.sucre, "Sucre"),
+            binding.departamentoPotosi to Pair(R.drawable.potosi, "Potosí"),
+            binding.departamentoBeni to Pair(R.drawable.beni, "Beni"),
+            binding.departamentoTarija to Pair(R.drawable.tarija, "Tarija"),
+            binding.departamentoCochabamba to Pair(R.drawable.cochabamba, "Cochabamba"),
+            binding.departamentoOruro to Pair(R.drawable.oruro, "Oruro"),
+            binding.departamentoPando to Pair(R.drawable.pando, "Pando")
         )
 
-        for ((buttonId, imageResId) in departamentos) {
-            val button = findViewById<ImageButton>(buttonId)
+        for ((button, data) in departamentos) {
+            val (imageResId, nombreDepartamento) = data
             button.setOnClickListener {
                 val intent = Intent(this, DepartamentoSeleccionadoActivity::class.java)
                 intent.putExtra("imagen_departamento", imageResId)
+                intent.putExtra("nombre_departamento", nombreDepartamento)
                 startActivity(intent)
             }
         }

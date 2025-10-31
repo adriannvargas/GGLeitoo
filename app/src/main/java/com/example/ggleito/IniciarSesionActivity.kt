@@ -49,11 +49,7 @@ class IniciarSesionActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
-//        if (currentUser != null) {
-//            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
-//            startActivity(intentPantallaPrincipal)
-//            finish()
-//        }
+
     }
 }
 
