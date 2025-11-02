@@ -61,9 +61,19 @@ class TrabajosPostuladosActivity : AppCompatActivity() {
 
         }
 
-        binding.imageViewCasa2.setOnClickListener {
+        binding.iconoHome.setOnClickListener {
             val intentVolverPantallaPrincipal = Intent(context, PantallaPrincipalActivity::class.java)
             startActivity(intentVolverPantallaPrincipal)
+        }
+
+        binding.imageViewPerfil.setOnClickListener {
+
+            val intentCambioDePantallaPerfilActivity = Intent(context, PantallaPerfilActivity::class.java)
+            startActivity(intentCambioDePantallaPerfilActivity)
+        }
+        binding.iconoBuscar.setOnClickListener {
+            val intentBusqueda = Intent(context, BusquedaActivity::class.java)
+            startActivity(intentBusqueda)
         }
 
         fun actualizarLista(){

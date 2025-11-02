@@ -16,7 +16,8 @@
         android:theme="@style/Theme.GGLeito">
         <activity
             android:name=".PantallaPerfilActivity"
-            android:exported="false" />
+            android:exported="true"/>
+
         <activity
             android:name=".TrabajosPostuladosActivity"
             android:exported="false" />
@@ -25,8 +26,7 @@
             android:exported="false" />
         <activity
             android:name=".BusquedaActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".DepartamentoSeleccionadoActivity"
             android:exported="false" />
@@ -35,12 +35,12 @@
             android:exported="false" />
         <activity
             android:name=".PantallaDeInicioActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity
             android:name=".RegistrarActivity"
             android:exported="false" />
@@ -52,8 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".PantallaPrincipalActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

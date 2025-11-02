@@ -29,6 +29,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+    <Button
+        android:id="@+id/botton_cerrar_sesion"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/rojo"
+        android:fontFamily="@font/fileskool"
+        android:text="Cerrar Sesion"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barra_de_abajo"
+        android:layout_marginBottom="80dp"/>
 
     <LinearLayout
         android:layout_width="300dp"

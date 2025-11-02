@@ -40,13 +40,9 @@ class DetallesTrabajoActivity : AppCompatActivity() {
         val trabajoJson: String? = intent.getStringExtra(TRABAJO_JSON)
 
         val trabajoJsonPostulados: String? = intent.getStringExtra(TRABAJO_JSON2)
-
-
-        //Estamos convirtiendo el Json de nuevo a objeto
         val trabajo = trabajoJson?.let {
             Json.decodeFromString<Trabajos>(it)
         }
-
         val trabajo2 = trabajoJsonPostulados?.let {
             Json.decodeFromString<Trabajos>(it)
         }
@@ -121,16 +117,25 @@ class DetallesTrabajoActivity : AppCompatActivity() {
         }
 
 
-        binding.imageViewCasa.setOnClickListener {
+        binding.imageViewPerfil.setOnClickListener {
 
-            val intentCambioPantalla: Intent = Intent(context, PantallaPrincipalActivity::class.java)
-            startActivity(intentCambioPantalla)
+            val intentCambioDePantallaPerfilActivity = Intent(context, PantallaPerfilActivity::class.java)
+            startActivity(intentCambioDePantallaPerfilActivity)
+        }
+        binding.iconoBuscar.setOnClickListener {
+            val intentIrBusqueda = Intent(context, BusquedaActivity::class.java)
+            startActivity(intentIrBusqueda)
+        }
 
+        binding.iconoTrabajosPostulados.setOnClickListener {
+            val intentTrabajosPostulados = Intent(context, TrabajosPostuladosActivity::class.java)
+            startActivity(intentTrabajosPostulados)
         }
-        binding.imageViewFlechas.setOnClickListener {
-            val intentCambioPantalla: Intent = Intent(context, TrabajosPostuladosActivity::class.java)
-            startActivity(intentCambioPantalla)
+        binding.iconoHome.setOnClickListener {
+            val intentVolverPantallaPrincipal = Intent(context, PantallaPrincipalActivity::class.java)
+            startActivity(intentVolverPantallaPrincipal)
         }
+
 
 
 

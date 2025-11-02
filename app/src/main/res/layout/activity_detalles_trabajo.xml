@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="10"
+        android:weightSum="9"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +29,7 @@
 
             </ImageView>
             <ImageView
+                android:id="@+id/image_view_perfil"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/person_button_svgrepo_com"
@@ -205,40 +206,37 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
+            android:id="@+id/barra_de_abajo"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="35dp"
             android:background="@color/beige_claro"
             android:orientation="horizontal"
+            android:gravity="center"
             android:weightSum="3">
 
             <ImageView
-                android:id="@+id/image_view_casa"
+                android:id="@+id/icono_home"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/house_svgrepo_com">
-
-            </ImageView>
+                app:srcCompat="@drawable/house_svgrepo_com"
+                app:tint="@color/black" />
 
             <ImageView
-                android:id="@+id/image_view_lupa"
+                android:id="@+id/icono_buscar"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/lupa_svgrepo_com">
-
-            </ImageView>
+                app:srcCompat="@drawable/magnifier_svgrepo_com"
+                app:tint="@color/black" />
 
             <ImageView
-                android:id="@+id/image_view_flechas"
+                android:id="@+id/icono_trabajos_postulados"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/flechas_svgrepo_com">
-
-            </ImageView>
-
+                app:srcCompat="@drawable/arrow_left_arrow_right_svgrepo_com"
+                app:tint="@color/black" />
         </LinearLayout>
 
     </LinearLayout>

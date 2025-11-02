@@ -1,5 +1,7 @@
 package com.example.ggleito
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +13,7 @@ import com.example.ggleito.databinding.ActivityBusquedaBinding
 class BusquedaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusquedaBinding
+    val context : Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,17 +29,37 @@ class BusquedaActivity : AppCompatActivity() {
         binding.bottonFiltrar.setOnClickListener {
             mostrarOcultarFiltros()
         }
+        binding.iconoTrabajosPostulados.setOnClickListener {
+
+            val intentCambioDePantallaPostulados =
+                Intent(context, TrabajosPostuladosActivity::class.java)
+            startActivity(intentCambioDePantallaPostulados)
+        }
+        binding.iconoHome.setOnClickListener {
+            val intentVolverPantallaPrincipal = Intent(context, PantallaPrincipalActivity::class.java)
+            startActivity(intentVolverPantallaPrincipal)
+        }
+        binding.iconoPerfil.setOnClickListener {
+
+            val intentCambioDePantallaPerfilActivity = Intent(context, PantallaPerfilActivity::class.java)
+            startActivity(intentCambioDePantallaPerfilActivity)
+        }
     }
 
     private fun mostrarOcultarFiltros() {
-        val estanOcultos = binding.textViewSalario.visibility == View.INVISIBLE
-        val nuevoEstado = if (estanOcultos) View.VISIBLE else View.INVISIBLE
+        val estanOcultos = binding.textViewSalario.visibility == View.GONE
+        val nuevoEstado = if (estanOcultos) View.VISIBLE else View.GONE
         binding.textViewSalario.visibility = nuevoEstado
         binding.textViewSalario20005000.visibility = nuevoEstado
         binding.textViewSalario50008000.visibility = nuevoEstado
         binding.textViewSalarioMas8000.visibility = nuevoEstado
         binding.textViewHorario.visibility = nuevoEstado
-        binding.textViewHorarioMedioTiempo.visibility = nuevoEstado
-        binding.textViewHorarioTiempoCompleto.visibility = nuevoEstado
+        binding.textViewHorario4.visibility = nuevoEstado
+        binding.textViewHorario5.visibility = nuevoEstado
+        binding.textViewHorario6.visibility = nuevoEstado
+        binding.textViewHorario7.visibility = nuevoEstado
+        binding.textViewHorario8.visibility = nuevoEstado
+        binding.textViewHorario9.visibility = nuevoEstado
+
     }
 }

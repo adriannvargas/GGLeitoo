@@ -24,7 +24,6 @@ class PantallaPrincipalActivity : AppCompatActivity() {
     companion object{
         val listaTotalTrabajos = mutableListOf<Trabajos>(
             Trabajos("Soboce","Asistente de Logística y Despacho" ,"Marketing", 3000, "La Paz", 8,3, "Integramos a un Asistente de Logística. Apoyarás la planificación y el control de inventario de materiales de construcción, coordinando rutas de despacho para asegurar la entrega eficiente de nuestros productos.", R.drawable.soboce),
-
             Trabajos(
         "Banco Mercantil SC","Ejecutivo de Servicios y Plataforma","Logistica", 4000, "La Paz", 9,5, " Oportunidad para Ejecutivos de Servicios. Tu rol será crucial en la atención al cliente en plataforma, la apertura de cuentas y la promoción de productos bancarios, garantizando un servicio de excelencia.", R.drawable.bmsc),
             Trabajos(
@@ -34,9 +33,7 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             Trabajos(
         "Toyota Bolivia", "Asesor de Ventas de Vehículos","Mecanica",4500, "Santa Cruz", 10,6, " Contratamos Asesores de Venta apasionados por la industria automotriz. Promociona y vende nuestra flota de vehículos, gestionando la cartera de clientes y asegurando una experiencia de compra premium.", R.drawable.toyota),
             Trabajos("Burger King", "Supervisor de Turno","Cocina",4500, "Santa Cruz", 10,6, " Buscamos Supervisores de Turno con liderazgo. Gestionarás las operaciones diarias del restaurante, capacitarás al personal y asegurarás el cumplimiento de estándares de calidad y servicio al cliente.", R.drawable.burguerking),
-
             Trabajos("Banco BISA", "Cajero Bancario", "Atención al Cliente", 4200, "Santa Cruz", 9, 17, "Forma parte de nuestro equipo realizando operaciones de caja, depósitos y retiros, garantizando precisión y atención cordial a los clientes.", R.drawable.bancobisa),
-
             Trabajos("CRE R.L.", "Asistente Administrativo", "Atención al Cliente", 3800, "Cochabamba", 7, 15, "Apoyarás la gestión de documentos, control de archivo y atención a socios, asegurando el cumplimiento de procesos administrativos internos.", R.drawable.crerl),
             Trabajos("VIVA Bolivia", "Promotor de Ventas", "Atención al Cliente", 3000, "Chuquisaca", 10, 18, "Serás responsable de ofrecer planes y servicios móviles en puntos de venta y ferias, orientando a los clientes para optimizar su experiencia.", R.drawable.viva),
             Trabajos("Gobierno Autónomo Municipal de La Paz", "Secretaria Ejecutiva", "Atención al Cliente", 3200, "Oruro", 9, 17, "Gestionarás la agenda institucional, elaboración de documentos y coordinación de reuniones internas.", R.drawable.gobiernoautonomomunicipaldelapaz),
@@ -159,10 +156,20 @@ class PantallaPrincipalActivity : AppCompatActivity() {
         binding.recyclerPantallaRecomendados.adapter = adpater
 
 
-        binding.imageViewFlechas1.setOnClickListener {
 
-            val intentCambioDePantallaPostulados = Intent(context, TrabajosPostuladosActivity::class.java)
-            startActivity(intentCambioDePantallaPostulados)
+        binding.perfilPantallaPrincipal.setOnClickListener {
+
+            val intentCambioDePantallaPerfilActivity = Intent(context, PantallaPerfilActivity::class.java)
+            startActivity(intentCambioDePantallaPerfilActivity)
+        }
+        binding.iconoBuscar.setOnClickListener {
+            val intentBusqueda = Intent(context, BusquedaActivity::class.java)
+            startActivity(intentBusqueda)
+        }
+
+        binding.iconoTrabajosPostulados.setOnClickListener {
+            val intentVolverPantallaPrincipal = Intent(context, TrabajosPostuladosActivity::class.java)
+            startActivity(intentVolverPantallaPrincipal)
         }
 
 
