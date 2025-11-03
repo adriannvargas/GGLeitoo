@@ -105,5 +105,4 @@ class AdapterRecyclerPantallaPrincipal(private val mostrarClick: String = "Panta
         notifyDataSetChanged()
     }
 
-
 }

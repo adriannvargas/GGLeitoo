@@ -44,9 +44,7 @@ class BusquedaActivity : AppCompatActivity() {
         binding.recyclerPantallaBusqueda.layoutManager = GridLayoutManager(this, 1)
         binding.recyclerPantallaBusqueda.adapter = adapter
 
-        val trabajosRecibidosJson = intent.getStringExtra("listaTrabajos")!! //Para indicar que esto no sera nulo
-
-        val trabajosRecibidos = Json.decodeFromString<List<Trabajos>>(trabajosRecibidosJson)
+        val trabajosRecibidos = ListaGlobal.listaTrabajosTotal
 
         val trabajosaMostrarse = mutableListOf<Trabajos>()
 
@@ -91,8 +89,7 @@ class BusquedaActivity : AppCompatActivity() {
 
         binding.iconoTrabajosPostulados.setOnClickListener {
 
-            val intentCambioDePantallaPostulados =
-                Intent(context, TrabajosPostuladosActivity::class.java)
+            val intentCambioDePantallaPostulados = Intent(context, TrabajosPostuladosActivity::class.java)
             startActivity(intentCambioDePantallaPostulados)
         }
 

@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ggleito.adapters.AdapterRecyclerPantallaPrincipal
 import com.example.ggleito.databinding.ActivityDetallesTrabajoBinding
 import com.example.ggleito.databinding.ActivityTrabajosPostuladosBinding
+import com.example.ggleito.dataclasses.Trabajos
 import com.example.ggleito.managers.TrabajosPostuladosManager
+import kotlinx.serialization.json.Json
 
 class TrabajosPostuladosActivity : AppCompatActivity() {
 
@@ -42,6 +44,7 @@ class TrabajosPostuladosActivity : AppCompatActivity() {
             binding.recyclerPantallaPostulados.layoutManager = GridLayoutManager(this,1)
             binding.recyclerPantallaPostulados.adapter = adapter
         }
+
 
         fun mostrarTrabajosPostulados(){
 
