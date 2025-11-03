@@ -80,9 +80,7 @@ class TrabajosPostuladosActivity : AppCompatActivity() {
         fun actualizarLista(){
             mostrarTrabajosPostulados()
         }
-
         setUpRecyclerView()
         mostrarTrabajosPostulados()
-
     }
 }

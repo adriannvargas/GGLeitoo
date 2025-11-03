@@ -40,27 +40,28 @@ class BusquedaActivity : AppCompatActivity() {
         binding.bottonFiltrar.setOnClickListener {
             mostrarOcultarFiltros()
         }
+        binding.iconoCancelar.setOnClickListener {
+            binding.editTextBuscadorTrabajos.text.clear()
+        }
 
         binding.recyclerPantallaBusqueda.layoutManager = GridLayoutManager(this, 1)
         binding.recyclerPantallaBusqueda.adapter = adapter
 
         val trabajosRecibidos = ListaGlobal.listaTrabajosTotal
-
         val trabajosaMostrarse = mutableListOf<Trabajos>()
-
-        fun mostrarTrabjosBuscados(palabraClave: String){
-
+        fun mostrarTrabjosBuscados(palabraClave: String) {
             trabajosaMostrarse.clear()
-
-            for(i in 0 until trabajosRecibidos.size){
-                if(trabajosRecibidos[i].areaTrabajo == palabraClave){
-                    trabajosaMostrarse.add(trabajosRecibidos[i])
+            val claveEnMinusculas = palabraClave.trim().lowercase()
+            if (claveEnMinusculas.isNotEmpty()) {
+                for (i in 0 until trabajosRecibidos.size) {
+                    if (trabajosRecibidos[i].areaTrabajo.lowercase().contains(claveEnMinusculas)) {
+                        trabajosaMostrarse.add(trabajosRecibidos[i])
+                    }
                 }
-
             }
-
             adapter.addDataCards(trabajosaMostrarse)
         }
+
 
         fun mostrarTrabajosFiltrados(salarioSeleccionadoMin: Int,salarioSeleccionadoMax: Int, horarioSeleccionado: Int){
 
@@ -117,6 +118,5 @@ class BusquedaActivity : AppCompatActivity() {
         binding.textViewHorario9.visibility = nuevoEstado
 
     }
-
 
 }

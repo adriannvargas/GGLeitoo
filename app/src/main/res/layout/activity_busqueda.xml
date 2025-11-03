@@ -33,9 +33,9 @@
 
     <EditText
         android:id="@+id/edit_text_buscador_trabajos"
-        android:layout_width="0dp"
+        android:layout_width="220dp"
         android:layout_height="48dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/roundededittext"
@@ -45,21 +45,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imagen_empleabol" />
 
+
     <Button
         android:id="@+id/botton_buscar"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/verde"
         android:fontFamily="@font/fileskool"
         android:text="Buscar"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/imagen_empleabol"
         app:layout_constraintBottom_toBottomOf="@id/edit_text_buscador_trabajos"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/edit_text_buscador_trabajos"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imagen_empleabol"
+        app:layout_constraintVertical_bias="0.0" />
 
+
+    <ImageView
+        android:id="@+id/icono_cancelar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/icono_cancelar"
+        app:tint="@color/black"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="118dp"
+        app:layout_constraintStart_toEndOf="@id/edit_text_buscador_trabajos"
+        app:layout_constraintEnd_toStartOf="@id/botton_buscar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="120dp"
+
+        />
 
     <Button
         android:id="@+id/botton_filtrar"
@@ -232,7 +249,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_pantalla_busqueda"
                 android:layout_width="match_parent"
-                android:layout_height="481dp"
+                android:layout_height="519dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp" />
 
