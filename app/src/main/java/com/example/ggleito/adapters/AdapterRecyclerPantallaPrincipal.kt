@@ -20,9 +20,8 @@ class AdapterRecyclerPantallaPrincipal(private val mostrarClick: String = "Panta
     companion object{
         val TRABAJO_JSON = "id_trabajos_json"
         val TRABAJO_JSON2 = "id_trabajo_json2"
+        val TRABAJO_JSON3 = "id_trabajo_json3"
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PantallaPrincipalCardViewHolder {
 
@@ -45,6 +44,7 @@ class AdapterRecyclerPantallaPrincipal(private val mostrarClick: String = "Panta
 
                 val intent: Intent = Intent(context, DetallesTrabajoActivity::class.java).apply {
                 putExtra(TRABAJO_JSON, trabajoJson)
+                    putExtra("ORIGEN", DetallesTrabajoActivity.ORIGEN_PRINCIPAL)
             }
 
             context?.startActivity(intent)
@@ -58,18 +58,30 @@ class AdapterRecyclerPantallaPrincipal(private val mostrarClick: String = "Panta
 
                 val cambioDePantallaEnPostulados: Intent = Intent(context, DetallesTrabajoActivity::class.java).apply {
                     putExtra(TRABAJO_JSON2,trabajoJson2)
+                    putExtra("ORIGEN", DetallesTrabajoActivity.ORIGEN_POSTULADOS)
 
                 }
 
                 context?.startActivity(cambioDePantallaEnPostulados)
 
+            }
+        }else if(mostrarClick == "TrabajosBusqueda"){
+
+            holder.itemView.setOnClickListener {
+
+                val trabajoEspecifico3 = dataCards[position]
+                val trabajoJson3 = Json.encodeToString((trabajoEspecifico3))
+
+                val cambioDePantallaEnBusqueda: Intent = Intent(context, DetallesTrabajoActivity::class.java).apply {
+                    putExtra(TRABAJO_JSON3, trabajoJson3)
+                    putExtra("ORIGEN", DetallesTrabajoActivity.ORIGEN_BUSQUEDA)
+
+                }
+                context?.startActivity(cambioDePantallaEnBusqueda)
 
             }
 
         }
-
-
-
 
     }
 

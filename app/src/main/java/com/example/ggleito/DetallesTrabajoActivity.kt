@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.ggleito.databinding.ActivityDetallesTrabajoBinding
 import com.example.ggleito.adapters.AdapterRecyclerPantallaPrincipal.Companion.TRABAJO_JSON
 import com.example.ggleito.adapters.AdapterRecyclerPantallaPrincipal.Companion.TRABAJO_JSON2
+import com.example.ggleito.adapters.AdapterRecyclerPantallaPrincipal.Companion.TRABAJO_JSON3
 import com.example.ggleito.dataclasses.Trabajos
 import com.example.ggleito.managers.TrabajosPostuladosManager
 import kotlinx.serialization.json.Json
@@ -22,6 +23,14 @@ class DetallesTrabajoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetallesTrabajoBinding
 
     var context: Context = this
+
+    companion object{
+
+        const val ORIGEN_PRINCIPAL = "origen_principal"
+        const val ORIGEN_POSTULADOS = "origen_postulados"
+        const val ORIGEN_BUSQUEDA = "origen_busqueda"
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +46,7 @@ class DetallesTrabajoActivity : AppCompatActivity() {
             insets
         }
 
-        val trabajoJson: String? = intent.getStringExtra(TRABAJO_JSON)
-
-        val trabajoJsonPostulados: String? = intent.getStringExtra(TRABAJO_JSON2)
-        val trabajo = trabajoJson?.let {
-            Json.decodeFromString<Trabajos>(it)
-        }
-        val trabajo2 = trabajoJsonPostulados?.let {
-            Json.decodeFromString<Trabajos>(it)
-        }
-
-
+        val origen = intent.getStringExtra("ORIGEN")?: ORIGEN_PRINCIPAL
 
         fun mostrarDetallesTrabajo(trabajo: Trabajos){
 
@@ -59,61 +58,70 @@ class DetallesTrabajoActivity : AppCompatActivity() {
             binding.textViewUbicacion.text = "Ubicacion: \n${trabajo.ciudad}"
             binding.imageViewTrabajo.setImageResource(trabajo.imagen )
 
-
         }
 
-        if(trabajo != null ){
+        fun configuracionBotonPostular(trabajo: Trabajos){
 
-            mostrarDetallesTrabajo(trabajo)
+            binding.botonPostular.setOnClickListener {
 
-        }
+                TrabajosPostuladosManager.agregarTrabajos(this, trabajo)
+                android.widget.Toast.makeText(this, "Has postulado a: ${trabajo.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
 
-        if (trabajo2 != null){
-            mostrarDetallesTrabajo(trabajo2)
+                binding.botonPostular.visibility = Button.GONE
+                binding.constraintPadre2.visibility = View.GONE
 
-            binding.botonEliminarPostulacion.visibility = Button.VISIBLE
-            binding.botonPostular.visibility = Button.GONE
-        }
+                binding.botonConfirmacionPostulacion.visibility = Button.VISIBLE
+                binding.imageViewConfirmacionPostulacion.visibility = ImageView.VISIBLE
 
-        binding.botonPostular.setOnClickListener {
-
-            //let hace que nos aseguremos que el trabajo no sea null
-            trabajo?.let { trabajoSeleccionado ->
-
-                TrabajosPostuladosManager.agregarTrabajos(this, trabajoSeleccionado)
-                android.widget.Toast.makeText(this, "Has postulado a: ${trabajo?.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
-
-            }?: run {
-                android.widget.Toast.makeText(this, "Error, no se pudo postular", android.widget.Toast.LENGTH_SHORT).show()
-            }
-
-            binding.imageViewConfirmacionPostulacion.visibility = ImageView.VISIBLE
-            binding.botonConfirmacionPostulacion.visibility = Button.VISIBLE
-            binding.constraintPadre2.visibility = View.INVISIBLE
-            binding.botonPostular.visibility = Button.INVISIBLE
-
-        }
-
-        binding.botonEliminarPostulacion.setOnClickListener {
-
-            trabajo2?.let { trabajoaEliminar->
-
-                TrabajosPostuladosManager.eliminarTrabajo(this,trabajoaEliminar)
-                android.widget.Toast.makeText(this, "Has eliminado tu postulacion a: ${trabajo2?.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
-                val vueltaPantallaPostulados : Intent = Intent(context, TrabajosPostuladosActivity::class.java)
-                startActivity(vueltaPantallaPostulados)
-
-            }?: run {
-                android.widget.Toast.makeText(this, "Error, no pudiste cancelar tu postulacion", android.widget.Toast.LENGTH_SHORT).show()
             }
 
         }
+
+        fun configuracionBotonEliminar(trabajo: Trabajos){
+
+            binding.botonEliminarPostulacion.visibility = View.VISIBLE
+            binding.botonPostular.visibility = View.GONE
+
+            binding.botonEliminarPostulacion.setOnClickListener {
+
+                    TrabajosPostuladosManager.eliminarTrabajo(this,trabajo)
+                    android.widget.Toast.makeText(this, "Has eliminado tu postulacion a: ${trabajo.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
+                    val vueltaPantallaPostulados : Intent = Intent(context, TrabajosPostuladosActivity::class.java)
+                    startActivity(vueltaPantallaPostulados)
+            }
+
+        }
+
+        when(origen){
+            ORIGEN_PRINCIPAL->{
+                val trabajoJsonPrincipal: String = intent.getStringExtra(TRABAJO_JSON)!!
+                val trabajoPrincipal = Json.decodeFromString<Trabajos>(trabajoJsonPrincipal)
+
+                mostrarDetallesTrabajo(trabajoPrincipal)
+                configuracionBotonPostular(trabajoPrincipal)
+            }
+            ORIGEN_POSTULADOS->{
+                val trabajoJsonPostulados = intent.getStringExtra(TRABAJO_JSON2)!!
+                val trabajoPostulados = Json.decodeFromString<Trabajos>(trabajoJsonPostulados)
+
+                mostrarDetallesTrabajo(trabajoPostulados)
+                configuracionBotonEliminar(trabajoPostulados)
+            }
+            ORIGEN_BUSQUEDA->{
+                val trabajoJsonBusqueda = intent.getStringExtra(TRABAJO_JSON3)!!
+                val trabajoBusqueda = Json.decodeFromString<Trabajos>(trabajoJsonBusqueda)
+
+                mostrarDetallesTrabajo(trabajoBusqueda)
+                configuracionBotonPostular(trabajoBusqueda)
+            }
+
+        }
+
 
         binding.botonConfirmacionPostulacion.setOnClickListener {
 
             val intentVolverAlInicio = Intent(context, PantallaPrincipalActivity::class.java)
             startActivity(intentVolverAlInicio)
-
         }
 
 

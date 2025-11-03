@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TrabajosPostuladosActivity"
-    android:background="@color/beige">
+    android:background="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.5">
+            android:layout_weight="2.5"
+            android:background="@color/beige">
 
             <ImageView
                 android:layout_width="252dp"
@@ -81,7 +82,9 @@
                     android:layout_height="490dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    >
+
 
                 </androidx.recyclerview.widget.RecyclerView>
 

@@ -23,8 +23,6 @@ class TrabajosPostuladosActivity : AppCompatActivity() {
     private val adapter by lazy { AdapterRecyclerPantallaPrincipal("TrabajosPostulados") }
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -58,7 +56,6 @@ class TrabajosPostuladosActivity : AppCompatActivity() {
                     android.widget.Toast.LENGTH_SHORT
                 ).show()
             }
-
         }
 
         binding.iconoHome.setOnClickListener {
@@ -75,6 +72,7 @@ class TrabajosPostuladosActivity : AppCompatActivity() {
             val intentBusqueda = Intent(context, BusquedaActivity::class.java)
             startActivity(intentBusqueda)
         }
+
 
         fun actualizarLista(){
             mostrarTrabajosPostulados()
