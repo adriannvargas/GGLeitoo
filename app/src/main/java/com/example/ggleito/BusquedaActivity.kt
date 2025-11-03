@@ -2,9 +2,11 @@ package com.example.ggleito
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,6 +24,12 @@ class BusquedaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBusquedaBinding
 
     private val adapter by lazy { AdapterRecyclerPantallaPrincipal("TrabajosBusqueda") }
+
+    private var salarioMinSeleccionado = 0
+
+    private var salarioMaxSeleccionado = 0
+
+    private var horarioSeleccionado = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +56,7 @@ class BusquedaActivity : AppCompatActivity() {
         binding.recyclerPantallaBusqueda.adapter = adapter
 
         val trabajosRecibidos = ListaGlobal.listaTrabajosTotal
+
         val trabajosaMostrarse = mutableListOf<Trabajos>()
         fun mostrarTrabjosBuscados(palabraClave: String) {
             trabajosaMostrarse.clear()
@@ -58,27 +67,121 @@ class BusquedaActivity : AppCompatActivity() {
                         trabajosaMostrarse.add(trabajosRecibidos[i])
                     }
                 }
+
             }
+
             adapter.addDataCards(trabajosaMostrarse)
         }
 
+        fun mostrarTrabajosFiltrados(salarioSeleccionadoMin: Int, salarioSeleccionadoMax: Int, horarioSeleccionado: Int) {
 
-        fun mostrarTrabajosFiltrados(salarioSeleccionadoMin: Int,salarioSeleccionadoMax: Int, horarioSeleccionado: Int){
+            if(salarioSeleccionadoMin == 0 || salarioSeleccionadoMax == 0){
 
-            for(i in 0 until trabajosRecibidos.size){
-                if (trabajosRecibidos[i].salario >= salarioSeleccionadoMin && trabajosRecibidos[i].salario <=  salarioSeleccionadoMax && (trabajosRecibidos[i].horarioFin - trabajosRecibidos[i].horarioInicio) == horarioSeleccionado){
+                Toast.makeText(this, "Selecciona salario y horario", Toast.LENGTH_SHORT).show()
 
+            }else{
+                trabajosaMostrarse.clear()
 
+                for (i in trabajosRecibidos.indices) {
+                    val trabajo = trabajosRecibidos[i]
+                    val duracionHorario = trabajo.horarioFin - trabajo.horarioInicio
+                    val cumpleSalario = if (salarioMaxSeleccionado == Int.MAX_VALUE) {
+                        trabajo.salario >= salarioSeleccionadoMin
+                    } else {
+                        trabajo.salario >= salarioSeleccionadoMin && trabajo.salario <= salarioSeleccionadoMax
+                    }
+
+                    if (cumpleSalario && duracionHorario == horarioSeleccionado) {
+                        trabajosaMostrarse.add(trabajo)
+                    }
                 }
 
+                adapter.addDataCards(trabajosaMostrarse)
             }
 
+        }
+
+        fun actualizarBotonesSalario() {
+
+            binding.textViewSalario20005000.setBackgroundResource(R.drawable.roundedlayoutblanco)
+            binding.textViewSalario50008000.setBackgroundResource(R.drawable.roundedlayoutblanco)
+            binding.textViewSalarioMas8000.setBackgroundResource(R.drawable.roundedlayoutblanco)
+
+            when (salarioMinSeleccionado) {
+                2000 -> binding.textViewSalario20005000.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+                5000 -> binding.textViewSalario50008000.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+                8000 -> binding.textViewSalarioMas8000.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+            }
+        }
+
+        fun actualizarBotonesHorario() {
+
+            val botonesHorario = listOf(binding.textViewHorario4,binding.textViewHorario5, binding.textViewHorario6,
+                binding.textViewHorario7, binding.textViewHorario8)
+            botonesHorario.forEach { it.setBackgroundResource(R.drawable.roundedlayoutblanco) }
+
+            when (horarioSeleccionado) {
+                4 -> binding.textViewHorario4.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+                5 -> binding.textViewHorario5.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+                6 -> binding.textViewHorario6.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+                7 -> binding.textViewHorario7.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+                8 -> binding.textViewHorario8.setBackgroundResource(R.drawable.roundedlayoutbeigeconbordesnegros)
+            }
+        }
+
+        binding.textViewSalario20005000.setOnClickListener {
+            salarioMinSeleccionado = 2000
+            salarioMaxSeleccionado = 5000
+            actualizarBotonesSalario()
+        }
+        binding.textViewSalario50008000.setOnClickListener {
+            salarioMinSeleccionado = 5000
+            salarioMaxSeleccionado = 8000
+            actualizarBotonesSalario()
+        }
+        binding.textViewSalarioMas8000.setOnClickListener {
+            salarioMinSeleccionado = 8000
+            salarioMaxSeleccionado = 20000
+            actualizarBotonesSalario()
+        }
+
+        binding.textViewHorario4.setOnClickListener {
+            horarioSeleccionado = 4
+            actualizarBotonesHorario()
+        }
+
+        binding.textViewHorario5.setOnClickListener {
+            horarioSeleccionado = 5
+            actualizarBotonesHorario()
+        }
+
+        binding.textViewHorario6.setOnClickListener {
+            horarioSeleccionado = 6
+            actualizarBotonesHorario()
+        }
+
+        binding.textViewHorario7.setOnClickListener {
+            horarioSeleccionado = 7
+            actualizarBotonesHorario()
+        }
+
+
+        binding.textViewHorario8.setOnClickListener {
+            horarioSeleccionado = 8
+            actualizarBotonesHorario()
         }
 
         binding.bottonBuscar.setOnClickListener {
 
-            val palabraEscrita = binding.editTextBuscadorTrabajos.text.toString()
-            mostrarTrabjosBuscados(palabraEscrita)
+            if(binding.editTextBuscadorTrabajos.text.toString() == ""){
+                mostrarTrabajosFiltrados(salarioMinSeleccionado,salarioMaxSeleccionado,horarioSeleccionado)
+
+            }else{
+                val palabraEscrita = binding.editTextBuscadorTrabajos.text.toString()
+                mostrarTrabjosBuscados(palabraEscrita)
+            }
+
+
 
         }
 
@@ -115,7 +218,6 @@ class BusquedaActivity : AppCompatActivity() {
         binding.textViewHorario6.visibility = nuevoEstado
         binding.textViewHorario7.visibility = nuevoEstado
         binding.textViewHorario8.visibility = nuevoEstado
-        binding.textViewHorario9.visibility = nuevoEstado
 
     }
 
