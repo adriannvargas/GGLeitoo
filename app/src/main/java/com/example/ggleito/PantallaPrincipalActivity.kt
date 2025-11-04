@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ggleito.adapters.AdapterRecyclerPantallaPrincipal
 import com.example.ggleito.databinding.ActivityPantallaPrincipalBinding
 import com.example.ggleito.dataclasses.Trabajos
+import com.example.ggleito.dataclasses.Usuario
+import com.google.gson.Gson
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -40,7 +42,18 @@ class PantallaPrincipalActivity : AppCompatActivity() {
 
 
         val listaTrabajos = ListaGlobal.listaTrabajosTotal
-        val trabajosRecomendados = listaTrabajos.shuffled().take(30)
+        val trabajosRecomendados = mutableListOf<Trabajos>()
+        val sharedPref = getSharedPreferences("UsuarioData", Context.MODE_PRIVATE)
+        val json = sharedPref.getString("usuario_json", null)
+        val gson = Gson()
+        val usuario = gson.fromJson(json, Usuario::class.java)
+        for (i in 0 until listaTrabajos.size) {
+            if (listaTrabajos[i].ciudad== usuario.departamento) {
+                trabajosRecomendados.add(listaTrabajos[i])
+            }
+        }
+
+
 
         adpater.addDataCards(trabajosRecomendados)
 

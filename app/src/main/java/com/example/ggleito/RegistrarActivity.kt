@@ -20,6 +20,7 @@ class RegistrarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrarBinding
     private lateinit var auth: FirebaseAuth
     val context: Context = this
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

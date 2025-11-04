@@ -185,6 +185,7 @@ class BusquedaActivity : AppCompatActivity() {
             binding.textViewHorario7.visibility = TextView.GONE
             binding.textViewHorario8.visibility = TextView.GONE
 
+
             if(binding.editTextBuscadorTrabajos.text.toString() == ""){
                 mostrarTrabajosFiltrados(salarioMinSeleccionado,salarioMaxSeleccionado,horarioSeleccionado)
 
@@ -230,6 +231,7 @@ class BusquedaActivity : AppCompatActivity() {
         binding.textViewHorario6.visibility = nuevoEstado
         binding.textViewHorario7.visibility = nuevoEstado
         binding.textViewHorario8.visibility = nuevoEstado
+
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.ggleito
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -15,7 +16,7 @@ import com.google.firebase.auth.auth
 class IniciarSesionActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityIniciarSesionBinding
-
+    val context: Context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,6 +31,10 @@ class IniciarSesionActivity : AppCompatActivity() {
         binding.botonContinuar.setOnClickListener {
             val correo = binding.editTextCorreoElectronico.text.toString()
             val pass = binding.editTextContrasena.text.toString()
+            if (correo.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             auth.signInWithEmailAndPassword(correo, pass)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -48,6 +53,11 @@ class IniciarSesionActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val intentPantallaPrincipal = Intent(context, PantallaPrincipalActivity::class.java)
+            startActivity(intentPantallaPrincipal)
+        }
+
 
     }
 }
