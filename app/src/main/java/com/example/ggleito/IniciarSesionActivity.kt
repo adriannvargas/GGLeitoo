@@ -45,68 +45,9 @@ class IniciarSesionActivity : AppCompatActivity() {
                 }
         }
     }
-
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
 
     }
 }
-
-
-//        butonLogin.setOnClickListener {
-//            val correo = editCorreo.text.toString()
-//            val pass = editPass.text.toString()
-//            if (correo != "" && pass != ""){
-//                loginValidation(correo, pass)
-//            } else {
-//                Toast.makeText(
-//                    baseContext,
-//                    "Debe ingresar Correo y contraseña",
-//                    Toast.LENGTH_SHORT,
-//                ).show()
-//            }
-//        }
-//        butonLogin.setOnClickListener {
-//            val correo = editCorreo.text.toString()
-//            val pass = editPass.text.toString()
-//            if (pass.length < 8 || correo == ""){
-//                Toast.makeText(
-//                    baseContext,
-//                    "Debe ingresar una contraseña de 8 o mas digitos y debe ingresar un correo",
-//                    Toast.LENGTH_SHORT,
-//                ).show()
-//            } else {
-//                crearUsuario(correo, pass)
-//            }
-//        }
-//    }
-
-
-//    fun crearUsuario(
-//        correo:String,
-//        pass: String
-//    ){
-//        auth.createUserWithEmailAndPassword(correo, pass)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    val intentLogin = Intent(context, PantallaDeInicioActivity::class.java)
-//                    startActivity(intentLogin)
-//
-//
-//                } else {
-//                    Toast.makeText(
-//                        baseContext,
-//                        "Authentication failed.",
-//                        Toast.LENGTH_SHORT,
-//                    ).show()
-//                }
-//            }
-//    }
-//    fun loginValidation(
-//        correo:String,
-//        pass: String
-//    ){
-//
-//}
-//    }
