@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -172,6 +173,17 @@ class BusquedaActivity : AppCompatActivity() {
         }
 
         binding.bottonBuscar.setOnClickListener {
+
+            binding.textViewSalario.visibility = TextView.GONE
+            binding.textViewSalario20005000.visibility = TextView.GONE
+            binding.textViewSalario50008000.visibility = TextView.GONE
+            binding.textViewSalarioMas8000.visibility = TextView.GONE
+            binding.textViewHorario.visibility = TextView.GONE
+            binding.textViewHorario4.visibility = TextView.GONE
+            binding.textViewHorario5.visibility = TextView.GONE
+            binding.textViewHorario6.visibility = TextView.GONE
+            binding.textViewHorario7.visibility = TextView.GONE
+            binding.textViewHorario8.visibility = TextView.GONE
 
             if(binding.editTextBuscadorTrabajos.text.toString() == ""){
                 mostrarTrabajosFiltrados(salarioMinSeleccionado,salarioMaxSeleccionado,horarioSeleccionado)

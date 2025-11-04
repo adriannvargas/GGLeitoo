@@ -66,6 +66,24 @@
                 >
 
             </ImageView>
+            <TextView
+                android:id="@+id/text_view_advertencia_eliminar"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.2"
+                android:text="SEGURO QUE QUIERES ELIMINAR TU POSTULACION?"
+                android:textColor="@color/black"
+                android:fontFamily="@font/deluna"
+                android:textSize="30dp"
+                android:background="@drawable/edittextbordesnegros"
+                android:visibility="gone"
+                >
+
+            </TextView>
 
             <Button
                 android:id="@+id/boton_confirmacion_postulacion"
@@ -93,6 +111,39 @@
                 android:text="ELIMINAR POSTULACION"
                 android:backgroundTint="@color/beige_claro"
                 android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/boton_confirmar_eliminar_postulacion"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/constraint_padre2"
+                app:layout_constraintHorizontal_bias="0.15"
+                android:layout_marginTop="20dp"
+                android:text="CONFIRMAR"
+                android:backgroundTint="@color/verde"
+                android:visibility="gone"
+                />
+
+            <Button
+                android:id="@+id/boton_cancelar_eliminar_postulacion"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/constraint_padre2"
+                android:layout_marginTop="20dp"
+                app:layout_constraintHorizontal_bias="0.85"
+                android:text="CANCELAR"
+                android:backgroundTint="@color/black"
+                android:visibility="gone"
+                />
+
+
+
 
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -40,14 +40,7 @@ class PantallaPrincipalActivity : AppCompatActivity() {
 
 
         val listaTrabajos = ListaGlobal.listaTrabajosTotal
-        val trabajosRecomendados = mutableListOf<Trabajos>()
-
-
-        for (i in 0..listaTrabajos.size - 1) {
-            if (listaTrabajos[i].salario >= 2000) {
-                trabajosRecomendados.add(listaTrabajos[i])
-            }
-        }
+        val trabajosRecomendados = listaTrabajos.shuffled().take(30)
 
         adpater.addDataCards(trabajosRecomendados)
 
@@ -72,6 +65,5 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             val intentIraBusqueda: Intent = Intent(context, BusquedaActivity::class.java)
             startActivity(intentIraBusqueda)
         }
-
     }
 }

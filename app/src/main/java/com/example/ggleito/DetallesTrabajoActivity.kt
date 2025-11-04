@@ -84,10 +84,30 @@ class DetallesTrabajoActivity : AppCompatActivity() {
 
             binding.botonEliminarPostulacion.setOnClickListener {
 
-                    TrabajosPostuladosManager.eliminarTrabajo(this,trabajo)
-                    android.widget.Toast.makeText(this, "Has eliminado tu postulacion a: ${trabajo.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
-                    val vueltaPantallaPostulados : Intent = Intent(context, TrabajosPostuladosActivity::class.java)
-                    startActivity(vueltaPantallaPostulados)
+                binding.botonConfirmarEliminarPostulacion.visibility = Button.VISIBLE
+                binding.botonCancelarEliminarPostulacion.visibility = Button.VISIBLE
+                binding.textViewAdvertenciaEliminar.visibility = Button.VISIBLE
+                binding.constraintPadre2.visibility = View.GONE
+                binding.botonEliminarPostulacion.visibility = View.GONE
+
+            }
+
+            binding.botonConfirmarEliminarPostulacion.setOnClickListener {
+
+                TrabajosPostuladosManager.eliminarTrabajo(this,trabajo)
+                android.widget.Toast.makeText(this, "Has eliminado tu postulacion a: ${trabajo.nombreTrabajo}", android.widget.Toast.LENGTH_SHORT).show()
+                val vueltaPantallaPostulados : Intent = Intent(context, TrabajosPostuladosActivity::class.java)
+                startActivity(vueltaPantallaPostulados)
+
+            }
+
+            binding.botonCancelarEliminarPostulacion.setOnClickListener {
+
+                binding.botonConfirmarEliminarPostulacion.visibility = Button.GONE
+                binding.botonCancelarEliminarPostulacion.visibility = Button.GONE
+                binding.textViewAdvertenciaEliminar.visibility = Button.GONE
+                binding.constraintPadre2.visibility = View.VISIBLE
+                binding.botonEliminarPostulacion.visibility = View.VISIBLE
             }
 
         }

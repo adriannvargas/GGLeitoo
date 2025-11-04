@@ -25,13 +25,10 @@ object TrabajosPostuladosManager {
     fun obtenerTrabajos(context: Context): List<Trabajos> {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val json = prefs.getString(KEY_TRABAJOS, null)
+
         return if (json != null) {
-            try {
-                val type = object : TypeToken<List<Trabajos>>() {}.type
-                gson.fromJson(json, type) ?: emptyList()
-            } catch (e: Exception) {
-                emptyList()
-            }
+            val type = object : TypeToken<List<Trabajos>>() {}.type
+            gson.fromJson(json, type) ?: emptyList()
         } else {
             emptyList()
         }
